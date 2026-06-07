@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-label="Aurelia AI">
+  <rect width="64" height="64" rx="16" fill="#121829"/>
+  <circle cx="32" cy="32" r="18" stroke="#6EE7D8" stroke-width="3"/>
+  <path d="M32 18 L42 38 H22 Z" fill="#6EE7D8" opacity="0.9"/>
+  <circle cx="32" cy="32" r="4" fill="#0B0F19"/>
+</svg>

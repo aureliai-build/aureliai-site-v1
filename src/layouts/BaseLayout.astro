@@ -1,0 +1,69 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  current?: 'home' | 'services' | 'projects' | 'about' | 'contact';
+}
+
+const {
+  title,
+  description = 'Aurelia AI helps businesses automate workflows, build AI assistants, and unlock value from their data.',
+  current,
+} = Astro.props;
+
+const navItems = [
+  { href: '/', label: 'Home', key: 'home' },
+  { href: '/services', label: 'Services', key: 'services' },
+  { href: '/projects', label: 'Projects', key: 'projects' },
+  { href: '/about', label: 'About', key: 'about' },
+  { href: '/contact', label: 'Contact', key: 'contact' },
+] as const;
+
+const pageTitle = current === 'home' ? 'Aurelia AI' : `${title} | Aurelia AI`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/">
+          <img src="/logo.svg" alt="Aurelia AI logo" width="36" height="36" />
+          <span>Aurelia AI</span>
+        </a>
+        <nav class="nav" aria-label="Main navigation">
+          {
+            navItems.map((item) => (
+              <a href={item.href} class:list={{ active: current === item.key }}>
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© {new Date().getFullYear()} Aurelia AI. All rights reserved.</p>
+        <p>
+          <a href="mailto:aureliai.ai@gmail.com">aureliai.ai@gmail.com</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

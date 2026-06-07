@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const experience = [
+  'Software Engineering',
+  'AI / ML',
+  'Cloud Infrastructure',
+];
+---
+
+<BaseLayout title="About" current="about">
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">About</p>
+      <h1>Building useful AI, not hype</h1>
+      <p class="lead">
+        Aurelia AI partners with organizations that want practical automation,
+        better access to knowledge, and AI systems their teams can trust.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="card">
+        <h2>Mission</h2>
+        <p class="lead">
+          We help organizations leverage AI to improve productivity,
+          decision making and customer experience.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Experience</h2>
+      <ul class="list">
+        {experience.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
