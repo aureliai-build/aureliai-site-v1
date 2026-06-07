@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "aureliai-site-v1",
+  "main": "@astrojs/cloudflare/entrypoints/server",
+  "compatibility_date": "2026-06-07",
+  "compatibility_flags": ["global_fetch_strictly_public", "nodejs_compat"],
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "kv_namespaces": [
+    {
+      "binding": "SESSION",
+      "id": "643b88f76deb40d7b31cdfc03d46e8d1"
+    }
+  ]
+}
