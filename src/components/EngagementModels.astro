@@ -1,0 +1,58 @@
+---
+import { engagementModels } from '../data/site';
+---
+
+<section class="px-4 py-20 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-6xl">
+    <div class="mx-auto mb-14 max-w-2xl text-center">
+      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
+        How we <span class="text-gradient">engage</span>
+      </h2>
+      <p class="mt-4 text-lg text-muted">
+        A clear path from discovery to production—without forcing you into SaaS pricing tiers.
+      </p>
+    </div>
+
+    <div class="grid gap-6 lg:grid-cols-3">
+      {
+        engagementModels.map((model) => (
+          <article
+            class:list={[
+              'relative flex flex-col rounded-2xl border p-6',
+              model.featured
+                ? 'border-brand/50 bg-brand/5 glow-ring'
+                : 'glass border-card-border',
+            ]}
+          >
+            {model.featured && (
+              <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-brand px-3 py-1 text-xs font-semibold text-slate-950">
+                Most common
+              </span>
+            )}
+            <h3 class="text-xl font-semibold">{model.name}</h3>
+            <p class="mt-2 text-sm text-muted">{model.summary}</p>
+            <ul class="mt-6 flex-1 space-y-2 text-sm text-muted">
+              {model.highlights.map((item) => (
+                <li class="flex gap-2">
+                  <span class="text-brand">✓</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="/contact"
+              class:list={[
+                'mt-8 inline-flex justify-center rounded-full px-5 py-2.5 text-sm font-semibold transition',
+                model.featured
+                  ? 'bg-brand text-slate-950 hover:bg-brand-strong'
+                  : 'border border-card-border hover:border-brand/40',
+              ]}
+            >
+              {model.cta}
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

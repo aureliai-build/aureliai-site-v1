@@ -1,58 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import Pillars from '../components/Pillars.astro';
+import ProjectGrid from '../components/ProjectGrid.astro';
+import EngagementModels from '../components/EngagementModels.astro';
+import FAQ from '../components/FAQ.astro';
+import CTABanner from '../components/CTABanner.astro';
 ---
 
 <BaseLayout title="Home" current="home">
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <p class="eyebrow">AI Consulting</p>
-        <h1>AI Automation &amp; Knowledge Systems</h1>
-        <p class="lead">
-          We help businesses automate workflows, build AI assistants,
-          and unlock value from their data.
-        </p>
-        <div class="actions">
-          <a class="btn" href="/contact">Contact Us</a>
-          <a class="btn btn-secondary" href="/services">View Services</a>
-        </div>
-      </div>
-      <div class="card">
-        <h3>What we deliver</h3>
-        <ul class="list">
-          <li>Custom AI assistants for internal teams</li>
-          <li>Document intelligence pipelines</li>
-          <li>Workflow automation with measurable ROI</li>
-          <li>RAG systems over your company knowledge</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Core services</h2>
-        <p class="lead">Practical AI systems designed for real business operations.</p>
-      </div>
-      <div class="card-grid">
-        <article class="card">
-          <h3>AI Knowledge Assistants</h3>
-          <p>Internal GPT-style assistants trained on company knowledge.</p>
-        </article>
-        <article class="card">
-          <h3>Document Intelligence</h3>
-          <p>Extract and analyze information from PDFs, invoices, and reports.</p>
-        </article>
-        <article class="card">
-          <h3>Workflow Automation</h3>
-          <p>Automate repetitive business processes using AI.</p>
-        </article>
-        <article class="card">
-          <h3>RAG Systems</h3>
-          <p>Search and chat over company documents.</p>
-        </article>
-      </div>
-    </div>
-  </section>
+  <Hero />
+  <FeatureGrid limit={4} title="Core services for" titleAccent="modern teams" />
+  <Pillars />
+  <ProjectGrid />
+  <EngagementModels />
+  <FAQ />
+  <CTABanner />
 </BaseLayout>

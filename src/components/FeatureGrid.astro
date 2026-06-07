@@ -1,0 +1,48 @@
+---
+import Icon from './Icon.astro';
+import { services } from '../data/site';
+
+interface Props {
+  title?: string;
+  titleAccent?: string;
+  subtitle?: string;
+  limit?: number;
+}
+
+const {
+  title = 'Everything you need to',
+  titleAccent = 'adopt AI',
+  subtitle = 'Practical capabilities for knowledge work, documents, and automation.',
+  limit,
+} = Astro.props;
+
+const items = limit ? services.slice(0, limit) : services;
+---
+
+<section class="px-4 py-20 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-6xl">
+    <div class="mx-auto mb-14 max-w-2xl text-center">
+      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
+        {title}{' '}
+        <span class="text-gradient">{titleAccent}</span>
+      </h2>
+      <p class="mt-4 text-lg text-muted">{subtitle}</p>
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        items.map((service) => (
+          <article class="group glass rounded-2xl p-6 transition hover:border-brand/30 hover:-translate-y-1">
+            <div
+              class={`mb-4 inline-flex rounded-xl bg-gradient-to-br ${service.gradient} p-3 text-white shadow-lg`}
+            >
+              <Icon name={service.icon} class="h-6 w-6" />
+            </div>
+            <h3 class="text-lg font-semibold">{service.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">{service.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

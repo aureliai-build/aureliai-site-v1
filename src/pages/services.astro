@@ -1,58 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const services = [
-  {
-    title: 'AI Knowledge Assistants',
-    description: 'Internal GPT-style assistants trained on company knowledge.',
-  },
-  {
-    title: 'Document Intelligence',
-    description: 'Extract and analyze information from PDFs, invoices and reports.',
-  },
-  {
-    title: 'Workflow Automation',
-    description: 'Automate repetitive business processes using AI.',
-  },
-  {
-    title: 'RAG Systems',
-    description: 'Search and chat over company documents.',
-  },
-];
+import PageHero from '../components/PageHero.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import EngagementModels from '../components/EngagementModels.astro';
+import CTABanner from '../components/CTABanner.astro';
 ---
 
 <BaseLayout title="Services" current="services">
-  <section class="hero">
-    <div class="container">
-      <p class="eyebrow">Services</p>
-      <h1>AI solutions built for your business</h1>
-      <p class="lead">
-        From prototypes to production systems, we help teams adopt AI with clarity,
-        security, and measurable outcomes.
-      </p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container card-grid">
-      {
-        services.map((service) => (
-          <article class="card">
-            <h3>{service.title}</h3>
-            <p>{service.description}</p>
-          </article>
-        ))
-      }
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <h2>Ready to explore a use case?</h2>
-      <p class="lead">Tell us about your workflow, data, and goals. We will suggest a practical path forward.</p>
-      <div class="actions">
-        <a class="btn" href="/contact">Contact Us</a>
-      </div>
-    </div>
-  </section>
+  <PageHero
+    eyebrow="Services"
+    title="AI solutions built for your business"
+    description="From prototypes to production systems, we help teams adopt AI with clarity, security, and measurable outcomes."
+  />
+  <FeatureGrid
+    title="What we"
+    titleAccent="deliver"
+    subtitle="End-to-end consulting across knowledge systems, documents, and automation."
+  />
+  <EngagementModels />
+  <CTABanner />
 </BaseLayout>

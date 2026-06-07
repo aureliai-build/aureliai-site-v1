@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { site } from '../data/site';
 
 interface Props {
   title: string;
@@ -9,7 +10,7 @@ interface Props {
 
 const {
   title,
-  description = 'Aurelia AI helps businesses automate workflows, build AI assistants, and unlock value from their data.',
+  description = site.description,
   current,
 } = Astro.props;
 
@@ -21,49 +22,150 @@ const navItems = [
   { href: '/contact', label: 'Contact', key: 'contact' },
 ] as const;
 
-const pageTitle = current === 'home' ? 'Aurelia AI' : `${title} | Aurelia AI`;
+const pageTitle = current === 'home' ? site.name : `${title} | ${site.name}`;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
   </head>
   <body>
-    <header class="site-header">
-      <div class="container header-inner">
-        <a class="brand" href="/">
-          <img src="/logo.svg" alt="Aurelia AI logo" width="36" height="36" />
-          <span>Aurelia AI</span>
+    <header class="sticky top-0 z-50 border-b border-card-border/60 glass">
+      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+        <a href="/" class="flex items-center gap-3 font-bold tracking-wide">
+          <img src="/logo.svg" alt="" width="36" height="36" class="rounded-lg" />
+          <span>{site.name}</span>
         </a>
-        <nav class="nav" aria-label="Main navigation">
+
+        <nav class="hidden items-center gap-6 text-sm md:flex" aria-label="Main navigation">
           {
             navItems.map((item) => (
-              <a href={item.href} class:list={{ active: current === item.key }}>
+              <a
+                href={item.href}
+                class:list={[
+                  'transition hover:text-brand',
+                  current === item.key ? 'text-brand' : 'text-muted',
+                ]}
+              >
                 {item.label}
               </a>
             ))
           }
         </nav>
+
+        <div class="flex items-center gap-3">
+          <a
+            href="/contact"
+            class="hidden rounded-full bg-brand px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-brand-strong sm:inline-flex"
+          >
+            Contact Us
+          </a>
+          <button
+            type="button"
+            class="inline-flex rounded-lg border border-card-border p-2 text-muted md:hidden"
+            aria-label="Open menu"
+            aria-expanded="false"
+            id="menu-button"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M4 6h16v2H4V6Zm0 5h16v2H4v-2Zm0 5h16v2H4v-2Z"></path>
+            </svg>
+          </button>
+        </div>
       </div>
+
+      <nav
+        id="mobile-nav"
+        class="hidden border-t border-card-border/60 px-4 py-4 md:hidden"
+        aria-label="Mobile navigation"
+      >
+        <div class="flex flex-col gap-3 text-sm">
+          {
+            navItems.map((item) => (
+              <a
+                href={item.href}
+                class:list={[
+                  'rounded-lg px-3 py-2 transition hover:bg-card',
+                  current === item.key ? 'text-brand' : 'text-muted',
+                ]}
+              >
+                {item.label}
+              </a>
+            ))
+          }
+        </div>
+      </nav>
     </header>
 
     <main>
       <slot />
     </main>
 
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <p>© {new Date().getFullYear()} Aurelia AI. All rights reserved.</p>
-        <p>
-          <a href="mailto:aureliai.ai@gmail.com">aureliai.ai@gmail.com</a>
-        </p>
+    <footer class="border-t border-card-border/60 px-4 py-12 sm:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-6xl gap-10 md:grid-cols-3">
+        <div>
+          <div class="flex items-center gap-3 font-bold">
+            <img src="/logo.svg" alt="" width="32" height="32" class="rounded-lg" />
+            <span>{site.name}</span>
+          </div>
+          <p class="mt-4 text-sm text-muted">{site.description}</p>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-semibold uppercase tracking-wide text-brand">Explore</h2>
+          <ul class="mt-4 space-y-2 text-sm text-muted">
+            <li><a href="/services" class="hover:text-brand">Services</a></li>
+            <li><a href="/projects" class="hover:text-brand">Projects</a></li>
+            <li><a href="/about" class="hover:text-brand">About</a></li>
+            <li><a href="/contact" class="hover:text-brand">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-semibold uppercase tracking-wide text-brand">Connect</h2>
+          <ul class="mt-4 space-y-2 text-sm text-muted">
+            <li>
+              <a href={`mailto:${site.email}`} class="hover:text-brand">{site.email}</a>
+            </li>
+            <li>
+              <a href={site.linkedin} target="_blank" rel="noreferrer" class="hover:text-brand">
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a href={site.github} target="_blank" rel="noreferrer" class="hover:text-brand">
+                GitHub
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mx-auto mt-10 max-w-6xl border-t border-card-border/60 pt-6 text-sm text-muted">
+        © {new Date().getFullYear()} {site.name}. All rights reserved.
       </div>
     </footer>
+
+    <script>
+      const button = document.getElementById('menu-button');
+      const nav = document.getElementById('mobile-nav');
+
+      button?.addEventListener('click', () => {
+        const isOpen = nav?.classList.toggle('hidden') === false;
+        button.setAttribute('aria-expanded', String(isOpen));
+      });
+    </script>
   </body>
 </html>

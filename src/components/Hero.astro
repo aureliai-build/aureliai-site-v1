@@ -1,0 +1,64 @@
+---
+import { site, stats } from '../data/site';
+---
+
+<section class="relative overflow-hidden px-4 pb-20 pt-16 sm:px-6 sm:pt-24 lg:px-8">
+  <div
+    class="pointer-events-none absolute left-1/4 top-10 h-72 w-72 rounded-full bg-brand/20 blur-3xl animate-blob"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute right-1/4 top-32 h-72 w-72 rounded-full bg-indigo-500/15 blur-3xl animate-blob animation-delay-2000"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute bottom-0 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl animate-blob animation-delay-4000"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative mx-auto max-w-6xl text-center">
+    <div
+      class="mb-6 inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand/10 px-4 py-1.5 text-sm font-medium text-brand"
+    >
+      <span class="h-2 w-2 rounded-full bg-brand animate-pulse"></span>
+      AI Consulting
+    </div>
+
+    <h1 class="mx-auto max-w-4xl text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
+      <span class="text-gradient">{site.tagline}</span>
+    </h1>
+
+    <p class="mx-auto mt-6 max-w-2xl text-lg text-muted sm:text-xl">
+      {site.description}
+    </p>
+
+    <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+      <a
+        href="/contact"
+        class="inline-flex items-center rounded-full bg-brand px-6 py-3 font-semibold text-slate-950 transition hover:bg-brand-strong hover:-translate-y-0.5"
+      >
+        Contact Us
+      </a>
+      <a
+        href="/projects"
+        class="inline-flex items-center rounded-full border border-card-border glass px-6 py-3 font-semibold transition hover:border-brand/40 hover:-translate-y-0.5"
+      >
+        View Projects
+      </a>
+    </div>
+
+    <div class="mx-auto mt-16 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-3">
+      {
+        stats.map((stat) => (
+          <div class="glass glow-ring rounded-2xl px-6 py-5">
+            <div class="text-3xl font-bold text-brand">{stat.value}</div>
+            <div class="mt-1 text-sm text-muted">{stat.label}</div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

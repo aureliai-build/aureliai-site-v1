@@ -1,0 +1,37 @@
+---
+import { pillars } from '../data/site';
+---
+
+<section class="px-4 py-20 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-6xl">
+    <div class="mx-auto mb-14 max-w-2xl text-center">
+      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
+        Why teams <span class="text-gradient">work with us</span>
+      </h2>
+      <p class="mt-4 text-lg text-muted">
+        A consulting partner focused on useful systems, clear scope, and measurable outcomes.
+      </p>
+    </div>
+
+    <div class="grid gap-6 lg:grid-cols-3">
+      {
+        pillars.map((pillar) => (
+          <article class="glass testimonial-card rounded-2xl p-6">
+            <h3 class="text-lg font-semibold">{pillar.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-muted">{pillar.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonial-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .testimonial-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px -20px rgb(110 231 216 / 0.2);
+  }
+</style>

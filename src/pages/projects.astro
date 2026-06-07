@@ -1,52 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const projects = [
-  {
-    title: 'Chat with PDF Assistant',
-    description: 'Upload documents and ask questions with grounded, cited answers.',
-    url: 'https://github.com/aureliai-build',
-  },
-  {
-    title: 'Invoice OCR Extraction',
-    description: 'Extract structured fields from invoices and export to spreadsheets or ERP systems.',
-    url: 'https://github.com/aureliai-build',
-  },
-  {
-    title: 'Knowledge Base Search System',
-    description: 'Semantic search and chat over internal documentation and SOPs.',
-    url: 'https://github.com/aureliai-build',
-  },
-];
+import PageHero from '../components/PageHero.astro';
+import ProjectGrid from '../components/ProjectGrid.astro';
+import CTABanner from '../components/CTABanner.astro';
 ---
 
 <BaseLayout title="Projects" current="projects">
-  <section class="hero">
-    <div class="container">
-      <p class="eyebrow">Projects</p>
-      <h1>Selected work &amp; prototypes</h1>
-      <p class="lead">
-        A sample of systems we have built or are actively developing.
-        Replace these links with your own GitHub repositories as they go live.
-      </p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container card-grid">
-      {
-        projects.map((project) => (
-          <article class="card">
-            <h3>{project.title}</h3>
-            <p>{project.description}</p>
-            <div class="actions">
-              <a class="btn btn-secondary" href={project.url} target="_blank" rel="noreferrer">
-                View on GitHub
-              </a>
-            </div>
-          </article>
-        ))
-      }
-    </div>
-  </section>
+  <PageHero
+    eyebrow="Projects"
+    title="Selected work & prototypes"
+    description="A sample of systems we have built or are actively developing. Personal and internal projects are a great place to start."
+  />
+  <ProjectGrid showIntro={false} />
+  <CTABanner />
 </BaseLayout>

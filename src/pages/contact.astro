@@ -1,40 +1,46 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import FAQ from '../components/FAQ.astro';
+import { site } from '../data/site';
 ---
 
 <BaseLayout title="Contact" current="contact">
-  <section class="hero">
-    <div class="container">
-      <p class="eyebrow">Contact</p>
-      <h1>Let&apos;s talk about your next AI project</h1>
-      <p class="lead">
-        Reach out with a short description of your use case. We typically respond within one business day.
-      </p>
+  <PageHero
+    eyebrow="Contact"
+    title="Let's talk about your next AI project"
+    description="Reach out with a short description of your use case. We typically respond within one business day."
+  />
+
+  <section class="px-4 pb-8 sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-5xl gap-6 lg:grid-cols-3">
+      <a
+        href={`mailto:${site.email}`}
+        class="glass glow-ring rounded-2xl p-6 transition hover:border-brand/40"
+      >
+        <h2 class="text-sm font-semibold uppercase tracking-wide text-brand">Email</h2>
+        <p class="mt-3 font-medium">{site.email}</p>
+      </a>
+      <a
+        href={site.linkedin}
+        target="_blank"
+        rel="noreferrer"
+        class="glass rounded-2xl p-6 transition hover:border-brand/40"
+      >
+        <h2 class="text-sm font-semibold uppercase tracking-wide text-brand">LinkedIn</h2>
+        <p class="mt-3 font-medium">Aurelia AI on LinkedIn</p>
+      </a>
+      <a
+        href={site.github}
+        target="_blank"
+        rel="noreferrer"
+        class="glass rounded-2xl p-6 transition hover:border-brand/40"
+      >
+        <h2 class="text-sm font-semibold uppercase tracking-wide text-brand">GitHub</h2>
+        <p class="mt-3 font-medium">github.com/aureliai-build</p>
+      </a>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="card">
-        <ul class="contact-list">
-          <li>
-            <strong>Email</strong><br />
-            <a href="mailto:aureliai.common@gmail.com">aureliai.common@gmail.com</a>
-          </li>
-          <li>
-            <strong>LinkedIn</strong><br />
-            <a href="https://www.linkedin.com/company/aureliai-ai" target="_blank" rel="noreferrer">
-              Aurelia AI on LinkedIn
-            </a>
-          </li>
-          <li>
-            <strong>GitHub</strong><br />
-            <a href="https://github.com/aureliai-build" target="_blank" rel="noreferrer">
-              github.com/aureliai-build
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
+  <FAQ />
 </BaseLayout>

@@ -1,43 +1,43 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const experience = [
-  'Software Engineering',
-  'AI / ML',
-  'Cloud Infrastructure',
-];
+import PageHero from '../components/PageHero.astro';
+import Pillars from '../components/Pillars.astro';
+import CTABanner from '../components/CTABanner.astro';
+import { experience } from '../data/site';
 ---
 
 <BaseLayout title="About" current="about">
-  <section class="hero">
-    <div class="container">
-      <p class="eyebrow">About</p>
-      <h1>Building useful AI, not hype</h1>
-      <p class="lead">
-        Aurelia AI partners with organizations that want practical automation,
-        better access to knowledge, and AI systems their teams can trust.
-      </p>
+  <PageHero
+    eyebrow="About"
+    title="Building useful AI, not hype"
+    description="Aurelia AI partners with organizations that want practical automation, better access to knowledge, and AI systems their teams can trust."
+  />
+
+  <section class="px-4 pb-8 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-4xl">
+      <article class="glass glow-ring rounded-3xl p-8 sm:p-10">
+        <h2 class="text-2xl font-bold">Mission</h2>
+        <p class="mt-4 text-lg leading-relaxed text-muted">
+          We help organizations leverage AI to improve productivity, decision making and customer
+          experience.
+        </p>
+      </article>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="card">
-        <h2>Mission</h2>
-        <p class="lead">
-          We help organizations leverage AI to improve productivity,
-          decision making and customer experience.
-        </p>
+  <section class="px-4 py-12 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-4xl">
+      <h2 class="text-2xl font-bold">Experience</h2>
+      <div class="mt-6 grid gap-4 sm:grid-cols-3">
+        {
+          experience.map((item) => (
+            <div class="glass rounded-2xl px-5 py-4 text-center font-medium">{item}</div>
+          ))
+        }
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <h2>Experience</h2>
-      <ul class="list">
-        {experience.map((item) => <li>{item}</li>)}
-      </ul>
-    </div>
-  </section>
+  <Pillars />
+  <CTABanner />
 </BaseLayout>
