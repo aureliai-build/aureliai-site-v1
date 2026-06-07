@@ -1,6 +1,6 @@
-# Aurelia AI Website
+# Aureliai Website
 
-Marketing site for Aurelia AI, built with [Astro](https://astro.build) and deployed on [Cloudflare Pages](https://pages.cloudflare.com).
+Marketing site for Aureliai, built with [Astro](https://astro.build) and deployed on [Cloudflare Pages](https://pages.cloudflare.com).
 
 ## Local development
 

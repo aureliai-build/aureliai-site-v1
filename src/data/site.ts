@@ -1,5 +1,5 @@
 export const site = {
-  name: 'Aurelia AI',
+  name: 'Aureliai',
   tagline: 'AI Automation & Knowledge Systems',
   description:
     'We help businesses automate workflows, build AI assistants, and unlock value from their data.',
