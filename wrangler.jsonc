@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "aureliai-site-v1",
+  "name": "aureliai",
   "main": "@astrojs/cloudflare/entrypoints/server",
   "compatibility_date": "2026-06-07",
   "compatibility_flags": ["global_fetch_strictly_public", "nodejs_compat"],
